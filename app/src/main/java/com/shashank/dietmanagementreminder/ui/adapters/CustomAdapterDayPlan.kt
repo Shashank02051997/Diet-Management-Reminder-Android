@@ -49,6 +49,21 @@ class CustomAdapterDayPlan(private val imagesList: List<Any>) :
 
             val calendar = Calendar.getInstance()
             val dayOfTheWeek = calendar.get(Calendar.DAY_OF_WEEK)
+            when {
+                dayOfTheWeek != 2 -> calendar.add(
+                    Calendar.DAY_OF_WEEK,
+                    Calendar.MONDAY - dayOfTheWeek
+                )
+                dayOfTheWeek != 4 -> calendar.add(
+                    Calendar.DAY_OF_WEEK,
+                    Calendar.WEDNESDAY - dayOfTheWeek
+                )
+                dayOfTheWeek != 5 -> calendar.add(
+                    Calendar.DAY_OF_WEEK,
+                    Calendar.WEDNESDAY - dayOfTheWeek
+                )
+            }
+
             val year = calendar.get(Calendar.YEAR)
             val month = calendar.get(Calendar.MONTH)
             val day = calendar.get(Calendar.DAY_OF_MONTH)
@@ -59,9 +74,7 @@ class CustomAdapterDayPlan(private val imagesList: List<Any>) :
                         textFoodName.text = item.food
                         textMealTime.text = item.mealTime
 
-                        if (dayOfTheWeek != 2) {
-                            calendar.add(Calendar.DAY_OF_WEEK, Calendar.MONDAY - dayOfTheWeek)
-                        }
+
                         addEventToCalendar(
                             textMealTime.context,
                             year,
@@ -76,9 +89,6 @@ class CustomAdapterDayPlan(private val imagesList: List<Any>) :
                         imageFood.setImageResource(R.drawable.food_img_2)
                         textFoodName.text = item.food
                         textMealTime.text = item.mealTime
-                        /*if (dayOfTheWeek != 4) {
-                            calendar.add(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY - dayOfTheWeek)
-                        }
                         addEventToCalendar(
                             textMealTime.context,
                             year,
@@ -87,15 +97,13 @@ class CustomAdapterDayPlan(private val imagesList: List<Any>) :
                             WE,
                             item.food,
                             item.mealTime
-                        )*/
+                        )
                     }
                     is WeekDietListResponse.WeekDietData.Thursday -> {
                         imageFood.setImageResource(R.drawable.food_img_3)
                         textFoodName.text = item.food
                         textMealTime.text = item.mealTime
-                        /*if (dayOfTheWeek != 5) {
-                            calendar.add(Calendar.DAY_OF_WEEK, Calendar.THURSDAY - dayOfTheWeek)
-                        }
+                        /*
                         addEventToCalendar(
                             textMealTime.context,
                             year,

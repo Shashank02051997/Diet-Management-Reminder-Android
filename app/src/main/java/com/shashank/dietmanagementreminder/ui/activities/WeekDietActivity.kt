@@ -45,15 +45,28 @@ class WeekDietActivity : AppCompatActivity(), KodeinAware {
         dataBind = DataBindingUtil.setContentView(this, R.layout.activity_week_diet)
         setupUI()
         observeAPICall()
-        getWeekDietList()
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            ALL_PERMISSIONS_RESULT -> {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    customAdapterWeekDiet = CustomAdapterWeekDiet()
+                    dataBind.recyclerView.apply {
+                        itemAnimator = DefaultItemAnimator()
+                        adapter = customAdapterWeekDiet
+                    }
+                    getWeekDietList()
+                } else {
+                    showToast("Permission Failed!")
+                }
+            }
+        }
     }
 
     private fun setupUI() {
-        customAdapterWeekDiet = CustomAdapterWeekDiet()
-        dataBind.recyclerView.apply {
-            itemAnimator = DefaultItemAnimator()
-            adapter = customAdapterWeekDiet
-        }
         permissions.add(Manifest.permission.READ_CALENDAR)
         permissions.add(Manifest.permission.WRITE_CALENDAR)
         permissionsToRequest = findUnAskedPermissions(permissions)
