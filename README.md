@@ -8,7 +8,7 @@ Simple diet management reminder app using google calender. Here i am demonstrate
 
 <img src="" height="600" width="300" hspace="40"><img src="" height="600" width="300" hspace="40">
 
-<img src=.png" height="600" width="300" hspace="40">
+<img src=".png" height="600" width="300" hspace="40">
 
 
 ## Built With 🛠
