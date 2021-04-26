@@ -53,12 +53,7 @@ class WeekDietActivity : AppCompatActivity(), KodeinAware {
             ALL_PERMISSIONS_RESULT -> {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    customAdapterWeekDiet = CustomAdapterWeekDiet()
-                    dataBind.recyclerView.apply {
-                        itemAnimator = DefaultItemAnimator()
-                        adapter = customAdapterWeekDiet
-                    }
-                    getWeekDietList()
+                    initializeRecyclerView()
                 } else {
                     showToast("Permission Failed!")
                 }
@@ -76,6 +71,8 @@ class WeekDietActivity : AppCompatActivity(), KodeinAware {
                         permissionsToRequest!!.toTypedArray(),
                         ALL_PERMISSIONS_RESULT
                 )
+            } else {
+                initializeRecyclerView()
             }
         }
 
@@ -129,5 +126,14 @@ class WeekDietActivity : AppCompatActivity(), KodeinAware {
 
     private fun canMakeSmores(): Boolean {
         return Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1
+    }
+
+    private fun initializeRecyclerView() {
+        customAdapterWeekDiet = CustomAdapterWeekDiet()
+        dataBind.recyclerView.apply {
+            itemAnimator = DefaultItemAnimator()
+            adapter = customAdapterWeekDiet
+        }
+        getWeekDietList()
     }
 }
