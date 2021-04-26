@@ -6,9 +6,8 @@ Simple diet management reminder app using google calender. Here i am demonstrate
 
 **Please click the image below to enlarge.**
 
-<img src="" height="600" width="300" hspace="40"><img src="" height="600" width="300" hspace="40">
+<img src="https://github.com/Shashank02051997/Diet-Management-Reminder-Android/blob/main/Screenshots/Screenshot_20210426-073141.png" height="600" width="300" hspace="40"><img src="https://github.com/Shashank02051997/Diet-Management-Reminder-Android/blob/main/Screenshots/Screenshot_20210426-073150.png" height="600" width="300" hspace="40">
 
-<img src=".png" height="600" width="300" hspace="40">
 
 
 ## Built With 🛠
