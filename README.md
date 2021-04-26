@@ -1,6 +1,6 @@
 # Diet-Management-Reminder-Android
 
-Simple diet management reminder app using google calender. Here i am demonstrate the use of Modern Android development tools - (Kotlin, Architecture Components, MVVM, Room, Material Components)
+Simple diet management reminder app using google calender. Here i am demonstrate the use of Modern Android development tools - (Kotlin, Architecture Components, MVVM, LiveData, Material Components)
 
 ## Screenshots
 
